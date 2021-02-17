@@ -64,7 +64,7 @@ import kotlin.collections.ArrayList
              buSelected.setBackgroundColor(Color.BLUE)
              plr1.add(cId)
              activePlr=2
-            // AutoPlay()
+             AutoPlay()
          }else{
              buSelected.text="O"
              buSelected.setBackgroundColor(Color.GREEN)
@@ -137,12 +137,39 @@ import kotlin.collections.ArrayList
                 Toast.makeText(this, "Player1: winner!!", Toast.LENGTH_LONG).show()
             }
             else if(winer==2){
-                Toast.makeText(this, "Player2: winner!!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Computer: winner!!", Toast.LENGTH_LONG).show()
             }else if(winer==-1){
                 Toast.makeText(this, "Match Drawn!!", Toast.LENGTH_LONG).show()
             }
          }
 
+     }
+     fun AutoPlay(){
+         var emptyButs=ArrayList<Int>()
+         for (cId in 1..9){
+             if (!(plr1.contains(cId) || plr2.contains(cId))){
+                 emptyButs.add(cId)
+             }
+         }
+         val ran=Random()
+         val ranIndex=ran.nextInt(emptyButs.size-0)+0
+         val cId=emptyButs[ranIndex]
+         var buSelect:Button?
+          when(cId){
+             1->buSelect=binding.bu1
+             2->buSelect=binding.bu2
+             3->buSelect=binding.bu3
+             4->buSelect=binding.bu4
+             5->buSelect=binding.bu5
+             6->buSelect=binding.bu6
+             7->buSelect=binding.bu7
+             8->buSelect=binding.bu8
+             9->buSelect=binding.bu9
+             else ->{
+                 buSelect=binding.bu1
+             }
+         }
+         Play(cId,buSelect)
      }
 
  }
